@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 //agregando al archivo mutantes para que reconozca las rutas
-app.use('/mutantes', mutantesRouter);
+app.use('/mutant', mutantesRouter);
 
 
 // catch 404 and forward to error handler
