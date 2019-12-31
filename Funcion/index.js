@@ -2,10 +2,13 @@ const isMutant = async (genes = []) => {
     let diagonal = [undefined, 0];
     let vertical = [undefined, 0];
     let horizontal = [undefined, 0];
+    let total = 0;
 
+    //cycle iterating through letter sequences
     for (let geneIndex = 0; geneIndex < genes.length; geneIndex++) {
         let gene = genes[geneIndex];
 
+        //cycle for iterating letters of every sequence
         for (let charIndex = 0; charIndex < genes.length; charIndex++) {
             let letter = gene[charIndex];
 
@@ -15,11 +18,13 @@ const isMutant = async (genes = []) => {
             }
             else {
                 horizontal[0] = letter;
-                horizontal[1]++;
+                horizontal[1] ++;
             }
+
             if (horizontal[1] == 4) {
-                console.log("Fila: " + geneIndex);
-                return true;
+                if(++total > 1){
+                    return true;
+                }
             }
 
             //vertical
@@ -34,8 +39,9 @@ const isMutant = async (genes = []) => {
             }
 
             if (vertical[1] == 4) {
-                console.log("Columna: " + geneIndex);
-                  return true;
+                if(++total > 1){
+                    return true;
+                }
             }
         }
 
@@ -52,15 +58,16 @@ const isMutant = async (genes = []) => {
         }
 
         if (diagonal[1] == 4) {
-            console.log("Diagonal: " + geneIndex);
-              return true;
+            if(++total > 1){
+                return true;
+            }
         }
 
         horizontal = [undefined, 0];
         vertical = [undefined, 0];
     }
 
-      return false;
+    return false;
 };
 
 exports.isMutant = isMutant;
