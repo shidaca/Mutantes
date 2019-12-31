@@ -17,7 +17,7 @@ const client = new pg.Client(
     client.connect()
     const query =  'INSERT INTO estadistica(ismutante,adn) VALUES($1, $2)';
 /* GET home page. */
-router.post('/mutant', async function(req, res, next) {
+router.post('/', async function(req, res, next) {
   
   //res.render('index', { title: 'Express' });
   let body= req.body;
