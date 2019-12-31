@@ -1,23 +1,23 @@
-const isMutant = async (genes = []) => {
+const isMutant = async (ADN = []) => {
     let diagonal = [undefined, 0];
     let vertical = [undefined, 0];
     let horizontal = [undefined, 0];
     let total = 0;
 
-    //cycle iterating through letter sequences
-    for (let geneIndex = 0; geneIndex < genes.length; geneIndex++) {
-        let gene = genes[geneIndex];
+    //Ciclo para recorrer ADN
+    for (let adnIndex = 0; adnIndex < ADN.length; adnIndex++) {
+        let gen = ADN[adnIndex];
 
-        //cycle for iterating letters of every sequence
-        for (let charIndex = 0; charIndex < genes.length; charIndex++) {
-            let letter = gene[charIndex];
+        //Ciclo para recorrer letras del ADN
+        for (let charIndex = 0; charIndex < ADN.length; charIndex++) {
+            let letraHorizontal = gen[charIndex];
 
-            if (horizontal[0] != letter) {
-                horizontal[0] = letter;
+            if (horizontal[0] != letraHorizontal) {
+                horizontal[0] = letraHorizontal;
                 horizontal[1] = 1;
             }
             else {
-                horizontal[0] = letter;
+                horizontal[0] = letraHorizontal;
                 horizontal[1] ++;
             }
 
@@ -28,13 +28,13 @@ const isMutant = async (genes = []) => {
             }
 
             //vertical
-            let lettter = genes[charIndex][geneIndex];
-            if (vertical[0] != lettter) {
-                vertical[0] = lettter;
+            let letraVertical = ADN[charIndex][adnIndex];
+            if (vertical[0] != letraVertical) {
+                vertical[0] = letraVertical;
                 vertical[1] = 1;
             }
             else {
-                vertical[0] = lettter;
+                vertical[0] = letraVertical;
                 vertical[1]++;
             }
 
@@ -46,14 +46,14 @@ const isMutant = async (genes = []) => {
         }
 
         //diagonal
-        let diagLetter = genes[geneIndex][geneIndex];
+        let letraDiagonal = ADN[adnIndex][adnIndex];
 
-        if (diagonal[0] != diagLetter) {
-            diagonal[0] = diagLetter;
+        if (diagonal[0] != letraDiagonal) {
+            diagonal[0] = letraDiagonal;
             diagonal[1] = 1;
         }
         else {
-            diagonal[0] = diagLetter;
+            diagonal[0] = letraDiagonal;
             diagonal[1]++;
         }
 
